@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isValid(String word) {
+        if (word.length() < 3) return false;
+        boolean hasV = false, hasC = false;
+        String vowels = "aeiouAEIOU";
+        for (char ch : word.toCharArray()) {
+            if (Character.isLetter(ch)) {
+                if (vowels.indexOf(ch) >= 0) hasV = true;
+                else hasC = true;
+            } else if (Character.isDigit(ch)) {
+                continue;
+            } else {
+                return false;
+            }
+        }
+        return hasV && hasC;
+    }
+}
