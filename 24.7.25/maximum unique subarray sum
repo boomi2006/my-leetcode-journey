@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Solution {
+    public int maxSum(int[] nums) {
+        int max = Arrays.stream(nums).max().getAsInt();
+
+        // Case 1: all numbers are <= 0
+        if (max <= 0) {
+            return max;
+        }
+
+        Set<Integer> seen = new HashSet<>();
+        int total = 0;
+
+        for (int num : nums) {
+            if (num > 0 && !seen.contains(num)) {
+                total += num;
+                seen.add(num);
+            }
+        }
+
+        return total;
+    }
+}
